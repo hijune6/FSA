@@ -2,6 +2,12 @@
 
 Pytorch Code of FSA method for Cross-Modality Person Re-Identification (Visible Thermal Re-ID) on RegDB dataset and SYSU-MM01 dataset.
 
+### Results
+Dataset | Rank1  | mAP 
+ ---- | ----- | ------  
+ RegDB | ~87.23% | ~80.70%  
+ SYSU-MM01  | ~73.63% | ~69.25% 
+
 ### Usage
 
 Our code extends the pytorch implementation of Cross-Modal-Re-ID-baseline in [Github](https://github.com/mangye16/Cross-Modal-Re-ID-baseline). Please refer to the offical repo for details of data preparation.
