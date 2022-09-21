@@ -1,20 +1,13 @@
 # A Fourier-based Semantic Augmentation for Visible-Thermal Person Re-Identification 
+
 Pytorch Code of FSA method for Cross-Modality Person Re-Identification (Visible Thermal Re-ID) on RegDB dataset and SYSU-MM01 dataset.
-*Both of these two datasets may have some fluctuation due to random spliting.
 
-### 1. Prepare the datasets.
+### Usage
 
-- (1) RegDB Dataset : The RegDB dataset can be downloaded from this [website](http://dm.dongguk.edu/link.html) by submitting a copyright form.
+Our code extends the pytorch implementation of Cross-Modal-Re-ID-baseline in [Github](https://github.com/mangye16/Cross-Modal-Re-ID-baseline). Please refer to the offical repo for details of data preparation.
 
-- (Named: "Dongguk Body-based Person Recognition Database (DBPerson-Recog-DB1)" on their website). 
+###  Training
 
-- A private download link can be requested via sending me an email (mangye16@gmail.com). 
-
-- (2) SYSU-MM01 Dataset : The SYSU-MM01 dataset can be downloaded from this [website](http://isee.sysu.edu.cn/project/RGBIRReID.htm).
-
-- run `python pre_process_sysu.py` to pepare the dataset, the training data will be stored in ".npy" format.
-
-### 2. Joint Training.
 Train a model by
 ```bash
 python train_ext.py --dataset sysu --lr 0.1 --batch-size 6 --num_pos 4 --fsa_method FSA --lam 0.8 --gpu 0
@@ -28,15 +21,8 @@ python train_ext.py --dataset sysu --lr 0.1 --batch-size 6 --num_pos 4 --fsa_met
   
 - `--fsa_method`: which semantic augmentation method to use.
 
-You may need mannully define the data path first.
 
-**Parameters**: More parameters can be found in the script.
-
-**Sampling Strategy**: N (= bacth size) person identities are randomly sampled at each step, then randomly select four visible and four thermal image.
-
-**Training Log**: The training log will be saved in `log/" dataset_name"+ log`. Model will be saved in `save_model/`.
-
-### 3. Testing.
+###  Testing
 
 Test a model on SYSU-MM01 or RegDB dataset by using testing augmentation with HorizontalFlip
 ```bash
@@ -51,4 +37,41 @@ python testa.py --mode all --resume 'model_path' --gpu 0 --dataset sysu
 - `--resume`: the saved model path.
 
 - `--gpu`:  which gpu to run.
+
+
+###  Citation
+
+Please kindly cite the following paper in your publications if it helps your research:
+```
+@article{liu2020parameter,
+  title={Parameter sharing exploration and hetero-center triplet loss for visible-thermal person re-identification},
+  author={Liu, Haijun and Tan, Xiaoheng and Zhou, Xichuan},
+  journal={IEEE Transactions on Multimedia},
+  volume={23},
+  pages={4414--4425},
+  year={2020},
+  publisher={IEEE}
+}
+```
+```
+@article{liu2021strong,
+  title={Strong but simple baseline with dual-granularity triplet loss for visible-thermal person re-identification},
+  author={Liu, Haijun and Chai, Yanxia and Tan, Xiaoheng and Li, Dong and Zhou, Xichuan},
+  journal={IEEE Signal Processing Letters},
+  volume={28},
+  pages={653--657},
+  year={2021},
+  publisher={IEEE}
+}
+```
+```
+@article{Tan2022AFS,
+  title={A Fourier-Based Semantic Augmentation for Visible-Thermal Person Re-Identification},
+  author={Xiaoheng Tan and Yanxia Chai and Fenglei Chen and Haijun Liu},
+  journal={IEEE Signal Processing Letters},
+  year={2022},
+  volume={29},
+  pages={1684-1688}
+}
+```
 
